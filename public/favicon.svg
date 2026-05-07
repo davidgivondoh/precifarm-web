@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Precifarm">
+  <title>Precifarm</title>
+  <rect width="64" height="64" rx="12" fill="#0f766e"/>
+
+  <!-- Solar panel array -->
+  <g>
+    <rect x="10" y="32" width="44" height="16" rx="2" fill="#ffffff"/>
+    <g stroke="#0f766e" stroke-width="1.5" stroke-linecap="round">
+      <line x1="21" y1="32" x2="21" y2="48"/>
+      <line x1="32" y1="32" x2="32" y2="48"/>
+      <line x1="43" y1="32" x2="43" y2="48"/>
+      <line x1="10" y1="40" x2="54" y2="40"/>
+    </g>
+    <!-- Stands -->
+    <rect x="18" y="48" width="2" height="8" fill="#ffffff"/>
+    <rect x="44" y="48" width="2" height="8" fill="#ffffff"/>
+  </g>
+
+  <!-- Flame above the panels -->
+  <path
+    d="M 32 8
+       C 38 14, 42 22, 36 28
+       C 34 24, 32 24, 30 28
+       C 26 22, 28 12, 32 8 Z"
+    fill="#f97316"
+  />
+</svg>

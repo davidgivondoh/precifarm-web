@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" role="img" aria-label="Precifarm Grid placeholder illustration">
+  <title>Precifarm Grid — placeholder</title>
+  <rect width="480" height="360" fill="#E8F8EE"/>
+  <g fill="#4ADE80">
+    <rect x="120" y="120" width="60" height="120" rx="6"/>
+    <rect x="210" y="120" width="60" height="120" rx="6"/>
+    <rect x="300" y="120" width="60" height="120" rx="6"/>
+  </g>
+  <text x="240" y="280" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" fill="#1A1A1A">Grid — placeholder</text>
+</svg>

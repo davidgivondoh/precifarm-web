@@ -1,0 +1,43 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build output
+.next/
+out/
+dist/
+
+# testing
+coverage/
+playwright-report/
+playwright/.cache/
+test-results/
+.lighthouseci/
+
+# env
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# misc
+.DS_Store
+*.pem
+.vscode/
+.idea/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# generated
+public/sitemap*.xml
+public/robots.txt.generated
+public/og/

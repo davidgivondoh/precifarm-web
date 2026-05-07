@@ -1,0 +1,48 @@
+---
+title: Inside the PreciSense edge module
+slug: precisense-edge-module
+excerpt: Every Precifarm system has a small board on the charge controller. Here is what it does, why it costs twelve dollars, and what we got wrong.
+publishedAt: '2026-02-09'
+category: Engineering
+author: The Precifarm team
+cover: https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&q=80&auto=format&fit=crop
+seo:
+  title: Inside the PreciSense edge module
+  description: Engineering deep-dive on the small telemetry board that reports state of health from every Precifarm solar system.
+---
+
+Every Precifarm system has a small board attached to the charge controller. We call it PreciSense. It is the smallest interesting thing we ship.
+
+The board has four jobs.
+
+## Sense
+
+PreciSense reads voltage on the panel side, voltage on the battery side, current on each, temperature on the heatsink, and state of charge as reported by the battery management system. It samples every five seconds.
+
+## Summarise
+
+Five-second samples are useful for anomaly detection but expensive to transmit. PreciSense aggregates to one-minute medians and ships those over a low-bandwidth link.
+
+## Ship
+
+We use a 2G fallback because a lot of rural Kenya is still 2G. Telemetry goes to our gateway in Nairobi. Total payload per system per day: under 200 KB.
+
+## Decide locally
+
+If panel voltage drops below 8 V for more than ten minutes during daylight, PreciSense flags a likely shading or panel fault and notifies the gateway with priority.
+
+Most of our triage happens centrally, but the worst conditions get attention faster when the edge has rules of its own.
+
+---
+
+A few design notes.
+
+**We over-built the temperature sensor.** Heatsinks in coastal humidity corrode faster than spec. Two extra dollars on the temperature sensor was the cheapest insurance we have ever bought.
+
+**We under-built the radio.** We used the lowest-power 2G module that worked, on the theory that radios are the part most likely to fail in years three and four. So far, we have been right.
+
+**We do not store anything sensitive on the device.** State of charge, voltage, current. The customer's name is on the back-end record, not the chip.
+
+The board is two-layer FR-4, hand-routed by our engineering team in Nairobi, manufactured in Shenzhen, assembled in Nairobi. Total bill of materials, including enclosure: under twelve dollars.
+
+Edge sensing is not new. Edge sensing that is cheap, low-power, and shipped at scale by a Kenyan team — that part still feels new to us.
