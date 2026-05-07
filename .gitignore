@@ -25,6 +25,7 @@ test-results/
 *.pem
 .vscode/
 .idea/
+.ftp-secret
 
 # logs
 npm-debug.log*

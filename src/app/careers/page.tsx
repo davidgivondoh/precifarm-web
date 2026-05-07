@@ -445,9 +445,9 @@ export default async function CareersPage(): Promise<React.ReactElement> {
               </p>
             </div>
             <div className="flex flex-col gap-3">
-              <CtaButton href="mailto:careers@precifarm.com">Email careers</CtaButton>
-              <CtaButton href="/about" variant="secondary">
-                Read about us
+              <CtaButton href="/careers/apply/">Apply now</CtaButton>
+              <CtaButton href="mailto:careers@precifarm.com" variant="secondary">
+                Email careers
               </CtaButton>
             </div>
           </div>
@@ -458,10 +458,7 @@ export default async function CareersPage(): Promise<React.ReactElement> {
 }
 
 function RoleCard({ role }: { role: Role }): React.ReactElement {
-  const subject = encodeURIComponent(`Application: ${role.title}`);
-  const body = encodeURIComponent(
-    `Hi Precifarm,\n\nI am writing about the ${role.title} role.\n\n[Tell us a little about yourself, what you do well, and a link to something you have built or run.]\n`,
-  );
+  const applyHref = `/careers/apply/?role=${encodeURIComponent(role.title)}`;
   return (
     <article className="border-line bg-surface group flex flex-col rounded-xl border p-6 transition-all hover:-translate-y-0.5 hover:border-brand/30 hover:shadow-md">
       <div className="flex items-start justify-between gap-3">
@@ -515,8 +512,9 @@ function RoleCard({ role }: { role: Role }): React.ReactElement {
           careers@precifarm.com
         </span>
         <Link
-          href={`mailto:careers@precifarm.com?subject=${subject}&body=${body}`}
+          href={applyHref}
           className="bg-brand hover:bg-brand-strong inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold text-white transition-colors"
+          aria-label={`Apply for ${role.title}`}
         >
           Apply
           <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

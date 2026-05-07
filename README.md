@@ -157,6 +157,7 @@ All public — exposed to the browser.
 | `NEXT_PUBLIC_FORMSPREE_CUSTOMER` | yes      | contact form (customer)              |
 | `NEXT_PUBLIC_FORMSPREE_PARTNER`  | yes      | contact form (partner)               |
 | `NEXT_PUBLIC_FORMSPREE_PRESS`    | yes      | contact form (press)                 |
+| `NEXT_PUBLIC_FORMSPREE_CAREERS`  | yes      | careers application form (resume + cover letter) |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | optional | spam protection on contact form      |
 
 No server-only secrets — the site has no server runtime.
