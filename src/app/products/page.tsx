@@ -201,7 +201,7 @@ export default async function ProductsIndexPage(): Promise<React.ReactElement> {
                 <CompareRow
                   ordered={ordered}
                   label="Best for"
-                  cells={ordered.map((p) => p.forWhom[0])}
+                  cells={ordered.map((p) => p.forWhom[0] ?? '')}
                 />
                 <CompareRow
                   ordered={ordered}
