@@ -4,7 +4,7 @@ description: Three honestly-engineered solar packages, one Neura platform. Start
 
 hero:
   eyebrow: Solar built for Kenya
-  headline: Power your home or business with Kenyan sunshine.
+  headline: Power your home/business with reliable 24/07 offgrid solar energy
   subhead: Pick the package that fits your room, your home, or your site. We design it, install it in a day or two, and the same engineers care for it for years to come.
   image: /images/home/gemini-hero.png
   imageAlt: A rural Kenyan home with rooftop solar panels and a wall-mounted inverter and battery, in warm golden-hour light.
