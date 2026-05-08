@@ -53,9 +53,9 @@ export function MobileMenu({ links }: { links: ReadonlyArray<Link> }): React.Rea
           role="dialog"
           aria-modal="true"
           aria-label="Site navigation"
-          className="bg-surface fixed inset-0 z-50 flex flex-col"
+          className="bg-surface fixed inset-x-0 top-0 z-50 flex h-dvh max-h-screen flex-col"
         >
-          <div className="container-page border-line flex h-20 items-center justify-between border-b">
+          <div className="container-page border-line flex h-20 shrink-0 items-center justify-between border-b">
             <Link href="/" onClick={() => setOpen(false)} aria-label="Precifarm — home" className="flex items-center">
               <Image
                 src="/images/brand/precifarm-logo.png"
@@ -76,29 +76,33 @@ export function MobileMenu({ links }: { links: ReadonlyArray<Link> }): React.Rea
             </button>
           </div>
 
-          <nav aria-label="Mobile primary" className="container-page flex-1 py-8">
-            <ul className="space-y-4 text-lg">
+          <nav
+            aria-label="Mobile primary"
+            className="container-page flex-1 overflow-y-auto overscroll-contain py-6"
+            style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 1.5rem)' }}
+          >
+            <ul className="divide-line divide-y text-lg">
               {links.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="text-ink hover:text-brand block rounded-md py-2"
+                    className="text-ink hover:text-brand active:bg-surface-muted block rounded-md py-3 text-base font-medium"
                   >
                     {link.label}
                   </Link>
                 </li>
               ))}
-              <li className="pt-4">
-                <Link
-                  href="/contact"
-                  onClick={() => setOpen(false)}
-                  className="bg-brand hover:bg-brand-strong inline-flex rounded-md px-4 py-2 text-white"
-                >
-                  Contact
-                </Link>
-              </li>
             </ul>
+            <div className="mt-6">
+              <Link
+                href="/contact"
+                onClick={() => setOpen(false)}
+                className="bg-brand hover:bg-brand-strong active:bg-brand-strong inline-flex w-full items-center justify-center rounded-md px-4 py-3 text-base font-semibold text-white"
+              >
+                Contact
+              </Link>
+            </div>
           </nav>
         </div>
       )}
