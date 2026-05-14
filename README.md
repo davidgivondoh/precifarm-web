@@ -2,7 +2,7 @@
 
 Marketing website for [Precifarm](https://precifarm.com) — distributed solar energy in Kenya.
 
-Three honestly-engineered packages, one Neura platform: Starter (single-room essentials), Family (off-grid 2- to 3-bedroom homes), and Commercial (bespoke borehole irrigation, cold storage, clinics, and SME loads).
+Three honestly-engineered packages, one Neura Pod platform: Starter (single-room essentials), Family (off-grid 2- to 3-bedroom homes), and Commercial (scalable borehole irrigation, cold storage, clinics, and SME loads). Pricing aligned to Master Brief v0.9.
 
 ## Stack
 
@@ -11,7 +11,7 @@ Three honestly-engineered packages, one Neura platform: Starter (single-room ess
 - Tailwind CSS 4 (CSS-first config in `app/globals.css`, no `tailwind.config.ts`)
 - Custom MD/MDX content loader: `gray-matter` + Zod (no Contentlayer)
 - Lucide icons (`lucide-react`)
-- Hosted on Cloudflare Pages, DNS on Cloudflare
+- Hosted on Hostinger (static export served via shared hosting); DNS managed at registrar
 - Plausible analytics, Formspree forms, Cloudflare Turnstile
 - pnpm, Node 20 LTS
 
@@ -73,9 +73,9 @@ src/tests/                                # unit (vitest) and e2e (playwright)
 | -------------------------------- | -------------------------------------------------------------- |
 | `/`                              | Home — hero, product cards, why-one-platform, journey, portfolio |
 | `/products`                      | Listing + side-by-side comparison table                        |
-| `/products/starter`              | Starter detail — `KSh 137,000` cash or 24-month plan           |
-| `/products/family`               | Family detail — `KSh 373,000` cash, customer-arranged financing |
-| `/products/business`             | Commercial detail — bespoke quote, irrigation + SME loads      |
+| `/products/starter`              | Starter detail — `KSh 95,000` cash or Lipa Pole Pole (24 mo, KSh 5,472/mo) |
+| `/products/family`               | Family detail — `KSh 290,000` cash, customer-arranged bank financing |
+| `/products/business`             | Commercial detail — from `KSh 520,000` (entry) up to ~`KSh 1.5m` full irrigation |
 | `/products/{slug}/spec`          | Printable spec sheet (browser → Save as PDF)                   |
 | `/how-we-size`                   | Sizing methodology, the math, component cost basis             |
 | `/financing`                     | Six bank partners, three worked examples, next-steps           |
@@ -97,7 +97,7 @@ All page content lives in markdown frontmatter and is validated by Zod schemas i
 name: Precifarm Family
 slug: family
 tagline: Zero electricity bills. Total freedom.
-headline: A 4-panel, 5 kWh Neura Pod system that takes a 2- to 3-bedroom home off the grid.
+headline: A 2-panel, 5 kWh Neura Pod system that takes a 2- to 3-bedroom home off the grid.
 illustration: /illustrations/precifarm_family.png
 accentColor: family
 forWhom: [...]
@@ -144,7 +144,7 @@ The site is a fully static export — no server route generates real PDF binarie
 
 Precifarm sells Family and Commercial **cash-only**. Bank financing for those tiers is customer-arranged with one of six partners (KCB Clean Energy, KCB SME, Stanbic Solar PV, Co-op CO-OP-A-MAJI, Equity Equiloan, SACCOs). The `/financing` page lists partners grouped by buyer type, with a worked example per tier.
 
-Starter is the only package with a Precifarm-offered payment plan: 20% deposit + KSh 5,472/month over 24 months at 18% reducing balance, collected via M-Pesa.
+Starter is the only package with a Precifarm-offered payment plan — **Lipa Pole Pole**: KSh 12,500 deposit + KSh 5,472/month over 24 months, collected via M-Pesa standing order. Customer owns the system at end of term.
 
 ## Environment variables
 
@@ -172,13 +172,38 @@ No server-only secrets — the site has no server runtime.
 - Schema.org: paste into <https://validator.schema.org>
 - RSS: <https://validator.w3.org/feed/>
 
-## Deploy (Cloudflare Pages)
+## Deploy (Hostinger, static)
 
-1. Connect the GitHub repo
-2. Build command: `pnpm build`
-3. Build output directory: `out`
-4. Node version: 20
-5. Add the env vars from the table above
+The site builds to a static `out/` directory and is served from Hostinger shared hosting. Three deployment paths, by automation level:
+
+### Option A — GitHub Actions → FTP/SSH (recommended)
+
+Extend `.github/workflows/ci.yml` with a deploy job that uploads `out/` to Hostinger over FTP after the `build` job succeeds. Add these secrets in **GitHub Settings → Secrets and variables → Actions**:
+
+| Secret | Source (hPanel → Files → FTP Accounts) |
+| --- | --- |
+| `HOSTINGER_FTP_HOST` | FTP hostname (e.g. `ftp.precifarm.com` or the Hostinger-issued host) |
+| `HOSTINGER_FTP_USER` | FTP username for the precifarm.com domain |
+| `HOSTINGER_FTP_PASSWORD` | FTP password |
+| `HOSTINGER_FTP_REMOTE_DIR` | Remote directory (usually `public_html/` or `domains/precifarm.com/public_html/`) |
+
+The deploy step uses `SamKirkland/FTP-Deploy-Action` to mirror `out/` to the remote directory. Every push to `main` that passes typecheck, lint, tests, and build will publish.
+
+### Option B — Hostinger Git auto-deploy (limited)
+
+hPanel → Files → Git can pull this repo on push, but Hostinger does **not** run `pnpm build` on its servers. Using this would require committing the built `out/` to the repo (currently gitignored), which is messy. Skip unless Option A is blocked.
+
+### Option C — Manual upload (one-off / fallback)
+
+```bash
+pnpm build               # produces ./out
+# Upload contents of ./out (not the folder itself) to public_html/ via:
+#   - Hostinger File Manager (hPanel → Files → File Manager)
+#   - FileZilla / Cyberduck over FTP
+#   - rsync over SSH if your plan includes it
+```
+
+Add the env vars from the table above as build-time environment variables either in the GitHub Actions workflow (`env:` block) or in a local `.env.local` if building manually.
 
 ## Phase status
 

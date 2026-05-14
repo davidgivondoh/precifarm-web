@@ -44,7 +44,7 @@ Newer minors exist for some packages but are deferred to Phase 4 polish to avoid
 
 ## Content
 
-- [x] **Product specs and pricing reflect the May 2026 PDF** (`Precifarm_Solar_Pricing_Financing_v2.pdf`) — Starter 1 × 550W / 1.5 kWh / 1.5 kW @ KSh 137,000; Family 4 × 550W / 5 kWh / 3 kW @ KSh 373,000; Commercial 24 × 550W / 15 kWh / 12 kW (bespoke quote).
+- [x] **Product specs and pricing aligned to Master Brief v0.9** (May 2026) — Starter 1 × 550W / 1.5 kWh / 1.5 kW hybrid @ KSh 95,000 (or KSh 5,472/mo over 24 months on Lipa Pole Pole, KSh 12,500 deposit); Family 2 × 450W (900 W expandable) / 5 kWh / 5 kW hybrid @ KSh 290,000; Commercial scalable from 5 × 550W (2.75 kWp) / 15 kWh / 10 kVA from KSh 520,000 up to 24 × 550W (13.2 kWp) / 12 kW Deye for full borehole irrigation, ~KSh 1.5m.
 - [x] Sizing methodology surfaced as `/how-we-size` and inside each product page (`HonestSizing` component).
 - [x] Financing partner list from the PDF surfaced as `/financing` and inside Family/Commercial pages (`FinancingPartners` component).
 - [x] Commercial repositioned around irrigation as the lead use case (3 km from source, 5–45 acres) plus cold storage, milling, clinics, lodges, telecom shelters, SMEs.
@@ -66,16 +66,17 @@ Newer minors exist for some packages but are deferred to Phase 4 polish to avoid
 - Lighthouse Performance budget set to 90 (not 95) per the prompt's Next.js note.
 - `unused-javascript` Lighthouse audit set to `warn` not `error` — Next.js framework chunks include some unused code that's hard to eliminate without ejecting.
 
-## Bridge to old precifarm.com (deferred)
+## Bridge to old precifarm.com (mostly addressed)
 
-The site is a **pivot** of an existing precifarm.com property. As of 2026-05-04 the old site was unreachable from the build environment (TCP timeouts, no Wayback snapshot). When the user can paste content / screenshots / a summary, harvest:
+The site is a **pivot** of an existing precifarm.com property. Canonical content now flows from the Master Brief v0.9 (May 2026) + the Neura Pod Master Document + the Technical White Paper.
 
-- Original tagline / positioning (to inform a "what changed" line in /about)
-- Any product names that should redirect to the new product slugs
-- Team / founder names if they were public
-- Existing customer or partner names with permission to display
-
-The current /about copy reads as a first-person company story without referencing the pivot — honest given what we know.
+- [x] Founders / leadership named on /about (David Givondo Lead Engineer EBK B25264, Wycliffe Wabaye CTO, Amon Kipchirchir Head of Operations).
+- [x] Founding date corrected to August 2025 throughout.
+- [x] Three-pillar positioning (Neura Pod / Lipa Pole Pole / BESS consultancy & EPC) surfaced on home and about.
+- [x] "PreciSense" brand retired; site uses "data layer" terminology per Master Brief v0.9 changelog.
+- [x] Pricing aligned to Master Brief (95k / 290k / 520k) — see Content section above.
+- [ ] Real customer testimonials, named installations, partner logos — pending sign-off from the customers/partners themselves.
+- [ ] Pre-pivot redirects: any old precifarm.com routes that should 301 → new product slugs.
 
 ## Open questions
 
