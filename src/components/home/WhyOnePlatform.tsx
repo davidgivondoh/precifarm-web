@@ -7,40 +7,30 @@ export function WhyOnePlatform({ data }: { data: HomePage['whyOnePlatform'] }): 
     <section className="bg-surface-muted relative overflow-hidden">
       <div
         aria-hidden="true"
-        className="bg-brand/5 absolute -top-40 right-20 hidden h-[40rem] w-[40rem] rounded-full blur-3xl md:block"
+        className="bg-brand/5 pointer-events-none absolute -top-40 right-20 hidden h-[40rem] w-[40rem] rounded-full blur-3xl md:block"
       />
       <div className="container-page section relative">
         <SectionHeader heading={data.heading} intro={data.intro} />
 
-        <div className="border-line bg-surface mt-12 overflow-hidden rounded-2xl border shadow-sm">
-          <div className="grid gap-10 p-8 md:grid-cols-2 md:p-10">
-            {data.items.map((item) => (
-              <IconCard
-                key={item.title}
-                icon={item.icon}
-                title={item.title}
-                body={item.body}
-              />
-            ))}
-          </div>
+        <div className="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2 md:gap-y-0">
+          {data.items.map((item) => (
+            <IconCard key={item.title} icon={item.icon} title={item.title} body={item.body} />
+          ))}
+        </div>
 
-          <div className="border-line bg-surface-muted/40 grid gap-6 border-t p-8 md:grid-cols-[1.4fr_1fr] md:items-center md:p-10">
-            <div>
-              <p className="text-brand text-xs font-semibold uppercase tracking-wider">
-                Get the Neura app
-              </p>
-              <h3 className="font-display text-ink mt-2 text-xl font-medium md:text-2xl">
-                A self-diagnosing repair companion for your solar system.
-              </h3>
-              <p className="text-ink-muted mt-3 max-w-xl text-sm leading-relaxed">
-                Free for every Precifarm customer. Available in English and Swahili. Works offline
-                — sync resumes when your phone is back on a network.
-              </p>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
-              <AppStoreButton />
-              <GooglePlayButton />
-            </div>
+        <div className="border-line mt-14 flex flex-col items-start gap-6 border-t pt-10 md:flex-row md:items-center md:justify-between md:gap-10">
+          <div className="md:max-w-md">
+            <p className="text-brand text-xs font-semibold uppercase tracking-wider">
+              Get the Neura app
+            </p>
+            <p className="text-ink-muted mt-2 text-sm leading-relaxed">
+              Free for every Precifarm customer. English and Swahili. Works offline — syncs when
+              your phone reconnects.
+            </p>
+          </div>
+          <div className="flex gap-3">
+            <AppStoreButton />
+            <GooglePlayButton />
           </div>
         </div>
       </div>
@@ -55,14 +45,14 @@ function AppStoreButton(): React.ReactElement {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Download Neura on the App Store"
-      className="group bg-ink hover:bg-ink/90 flex items-center gap-3 rounded-xl px-5 py-3 text-white transition-all hover:-translate-y-0.5"
+      className="group bg-ink hover:bg-ink/90 flex items-center gap-3 rounded-xl px-4 py-2.5 text-white transition-all hover:-translate-y-0.5"
     >
-      <AppleGlyph className="h-7 w-7 shrink-0 text-white" />
+      <AppleGlyph className="h-6 w-6 shrink-0 text-white" />
       <div className="flex flex-col leading-tight">
-        <span className="text-[10px] font-medium uppercase tracking-wider text-white/60">
+        <span className="text-[9px] font-medium uppercase tracking-wider text-white/60">
           Download on the
         </span>
-        <span className="font-display text-base font-medium">App Store</span>
+        <span className="font-display text-sm font-medium">App Store</span>
       </div>
     </a>
   );
@@ -75,14 +65,14 @@ function GooglePlayButton(): React.ReactElement {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Get Neura on Google Play"
-      className="group bg-ink hover:bg-ink/90 flex items-center gap-3 rounded-xl px-5 py-3 text-white transition-all hover:-translate-y-0.5"
+      className="group bg-ink hover:bg-ink/90 flex items-center gap-3 rounded-xl px-4 py-2.5 text-white transition-all hover:-translate-y-0.5"
     >
-      <PlayGlyph className="h-7 w-7 shrink-0" />
+      <PlayGlyph className="h-6 w-6 shrink-0" />
       <div className="flex flex-col leading-tight">
-        <span className="text-[10px] font-medium uppercase tracking-wider text-white/60">
+        <span className="text-[9px] font-medium uppercase tracking-wider text-white/60">
           Get it on
         </span>
-        <span className="font-display text-base font-medium">Google Play</span>
+        <span className="font-display text-sm font-medium">Google Play</span>
       </div>
     </a>
   );

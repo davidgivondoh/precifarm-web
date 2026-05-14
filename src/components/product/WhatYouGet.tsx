@@ -23,15 +23,12 @@ export function WhatYouGet({ product }: { product: Product }): React.ReactElemen
           heading="What you get"
           intro="Every component we install on this package, with the exact specification."
         />
-        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-10 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
           {product.components.map((c) => {
             const Icon = iconFor(c.name);
             return (
-              <li
-                key={c.name}
-                className="border-line bg-surface group rounded-xl border p-6 transition-all hover:-translate-y-0.5 hover:border-brand/30 hover:shadow-md"
-              >
-                <span className="bg-brand/10 text-brand inline-flex h-11 w-11 items-center justify-center rounded-lg transition-colors group-hover:bg-brand group-hover:text-white">
+              <li key={c.name}>
+                <span className="bg-brand/10 text-brand inline-flex h-11 w-11 items-center justify-center rounded-lg">
                   <Icon aria-hidden="true" className="h-5 w-5" />
                 </span>
                 <h3 className="font-display text-ink mt-5 text-lg font-medium">{c.name}</h3>

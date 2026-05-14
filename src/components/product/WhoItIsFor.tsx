@@ -39,15 +39,12 @@ export function WhoItIsFor({ product }: { product: Product }): React.ReactElemen
         heading="Who it is for"
         intro="The customers we have built this package for, in their own words."
       />
-      <ul className="mt-10 grid gap-4 sm:grid-cols-2">
+      <ul className="mt-10 grid gap-x-8 gap-y-5 sm:grid-cols-2">
         {product.forWhom.map((p) => {
           const Icon = iconFor(p);
           return (
-            <li
-              key={p}
-              className="border-line bg-surface group flex items-start gap-3 rounded-xl border p-5 transition-all hover:-translate-y-0.5 hover:border-brand/30 hover:shadow-sm"
-            >
-              <span className="bg-brand/10 text-brand inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-colors group-hover:bg-brand group-hover:text-white">
+            <li key={p} className="flex items-start gap-3">
+              <span className="bg-brand/10 text-brand inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg">
                 <Icon aria-hidden="true" className="h-4 w-4" />
               </span>
               <p className="text-ink text-sm leading-relaxed">{p}</p>

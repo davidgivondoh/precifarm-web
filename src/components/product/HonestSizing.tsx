@@ -31,15 +31,15 @@ const sizingMath: Record<
     refill: '~1.0 day',
   },
   family: {
-    dailyPv: '7.43 kWh',
+    dailyPv: '3.04 kWh',
     usableBattery: '4.0 kWh',
-    dailyLoad: '4.0 kWh',
-    refill: '~1.2 days',
+    dailyLoad: '3.0 kWh',
+    refill: '~1.6 days',
   },
   business: {
-    dailyPv: '44.6 kWh',
+    dailyPv: 'Up to 44.6 kWh',
     usableBattery: '12 kWh',
-    dailyLoad: '28 kWh',
+    dailyLoad: 'Up to 28 kWh',
     refill: '~0.7 days',
   },
 };
@@ -55,9 +55,9 @@ export function HonestSizing({ product }: { product: Product }): React.ReactElem
           intro="Most Kenyan solar systems disappoint because installers undersize panels relative to battery capacity to win on price. Customers blame the battery; the real problem is the panel. We engineer around three sizing rules — and we will show you the numbers for your specific install."
         />
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-12 grid gap-x-10 gap-y-10 md:grid-cols-3">
           {rules.map(({ icon: Icon, title, body }) => (
-            <div key={title} className="border-line bg-surface rounded-xl border p-6">
+            <div key={title}>
               <span className="bg-brand/10 text-brand inline-flex h-11 w-11 items-center justify-center rounded-lg">
                 <Icon aria-hidden="true" className="h-5 w-5" />
               </span>
@@ -67,16 +67,14 @@ export function HonestSizing({ product }: { product: Product }): React.ReactElem
           ))}
         </div>
 
-        <div className="border-line bg-surface mt-10 overflow-hidden rounded-xl border shadow-sm">
-          <div className="border-line bg-surface-muted/40 border-b px-6 py-4">
-            <p className="text-brand text-xs font-semibold uppercase tracking-wider">
-              Sized for {product.name}
-            </p>
-            <p className="text-ink-muted mt-1 text-sm">
-              Verifiable against any other supplier in the market — the same rules, applied honestly.
-            </p>
-          </div>
-          <dl className="divide-line grid divide-y sm:grid-cols-4 sm:divide-x sm:divide-y-0">
+        <div className="border-line mt-14 border-t pt-8">
+          <p className="text-brand text-xs font-semibold uppercase tracking-wider">
+            Sized for {product.name}
+          </p>
+          <p className="text-ink-muted mt-1 max-w-2xl text-sm">
+            Verifiable against any other supplier in the market — the same rules, applied honestly.
+          </p>
+          <dl className="mt-6 grid gap-x-10 gap-y-6 sm:grid-cols-4">
             <Stat label="Daily PV generation" value={math.dailyPv} />
             <Stat label="Usable battery" value={math.usableBattery} />
             <Stat label="Daily load" value={math.dailyLoad} />
@@ -90,7 +88,7 @@ export function HonestSizing({ product }: { product: Product }): React.ReactElem
 
 function Stat({ label, value }: { label: string; value: string }): React.ReactElement {
   return (
-    <div className="px-6 py-5">
+    <div>
       <dt className="text-ink-muted text-xs uppercase tracking-wider">{label}</dt>
       <dd className="font-display text-ink mt-1 text-2xl font-medium">{value}</dd>
     </div>

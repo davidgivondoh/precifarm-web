@@ -30,15 +30,15 @@ export function Hero({ data }: { data: HomePage['hero'] }): React.ReactElement {
           <ul className="text-ink-muted mt-10 grid gap-x-8 gap-y-3 text-sm sm:grid-cols-3">
             <li className="flex items-baseline gap-2">
               <span className="bg-brand h-1.5 w-1.5 shrink-0 rounded-full" aria-hidden="true" />
-              Same-day install
+              Installed in 1–3 days
             </li>
             <li className="flex items-baseline gap-2">
               <span className="bg-brand h-1.5 w-1.5 shrink-0 rounded-full" aria-hidden="true" />
-              Five-year warranty
+              5-year service, same team
             </li>
             <li className="flex items-baseline gap-2">
               <span className="bg-brand h-1.5 w-1.5 shrink-0 rounded-full" aria-hidden="true" />
-              Operated, not abandoned
+              Live monitoring on every Pod
             </li>
           </ul>
         </div>

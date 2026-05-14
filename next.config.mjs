@@ -1,3 +1,8 @@
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
@@ -11,6 +16,9 @@ const nextConfig = {
     ],
   },
   pageExtensions: ['ts', 'tsx', 'mdx'],
+  turbopack: {
+    root: __dirname,
+  },
   // SVG-as-React-component handling deferred to Phase 2 when first needed.
   // Turbopack is the default in Next.js 16; we will use turbopack.rules
   // (or fall back to `next build --webpack` with @svgr/webpack) at that point.

@@ -15,18 +15,15 @@ const stages: ReadonlyArray<{
 
 export function CustomerJourney({ product }: { product: Product }): React.ReactElement {
   return (
-    <section className="bg-surface-panel">
+    <section className="bg-surface-muted">
       <div className="container-page section">
         <SectionHeader
           heading="The journey"
           intro="From the first call to year-three reliability — what working with us actually feels like."
         />
-        <ol className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-12 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
           {stages.map(({ key, title, icon: Icon }, i) => (
-            <li
-              key={key}
-              className="border-line bg-surface relative flex flex-col rounded-xl border p-6"
-            >
+            <li key={key} className="flex flex-col">
               <span className="bg-brand/10 text-brand inline-flex h-10 w-10 items-center justify-center rounded-lg">
                 <Icon aria-hidden="true" className="h-5 w-5" />
               </span>

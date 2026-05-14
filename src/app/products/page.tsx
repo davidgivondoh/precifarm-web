@@ -23,7 +23,7 @@ import type { Product } from '@/lib/content-schemas';
 export const metadata: Metadata = pageMetadata({
   title: 'Products — Starter, Family, Commercial',
   description:
-    'Three solar packages, one Neura platform. Starter from KSh 137,000 (or KSh 5,472/month on the Precifarm 24-month plan), Family from KSh 373,000, Commercial bespoke-quoted for irrigation (5–45 acres), cold storage, clinics, and SME sites. Optional bank financing partners.',
+    'Three solar packages, one Neura Pod platform. Starter from KSh 95,000 (or KSh 5,472/month on Lipa Pole Pole, our 24-month plan), Family from KSh 290,000, Commercial from KSh 520,000 for irrigation (5–45 acres), cold storage, clinics, and SME sites. Optional bank financing partners.',
   path: '/products/',
 });
 
@@ -47,41 +47,41 @@ const accent: Record<Product['slug'], ProductAccent> = {
     sizing: '550 W · 1.5 kWh',
     image: '/images/products/precifarm-starter-home.png',
     imageAlt:
-      'A Kenyan home at dusk with a single roof-mounted solar panel and a wall-mounted inverter.',
+      'A Kenyan home at dusk with a roof-mounted solar panel and a wall-mounted Neura Pod.',
     bg: 'bg-starter/15',
     highlights: [
-      'Lights, Wi-Fi, TV, fan, and phone charging — about 0.6 kWh/day',
-      'Neura Pod 1 installed in one day by an EPRA-licensed technician',
-      'Pay monthly: KSh 27,400 deposit, then KSh 5,472 over 24 months',
+      'Keep lights, Wi-Fi, TV, fans, and phone charging on through any blackout — about 0.6 kWh/day',
+      'Installed in a single day by an EPRA-licensed technician',
+      'From KSh 95,000 cash, or KSh 5,472/month over 24 months on Lipa Pole Pole (KSh 12,500 deposit)',
     ],
   },
   family: {
     glyph: Home,
     tier: 'Off-grid 2- to 3-bedroom home',
-    sizing: '2.2 kWp · 5 kWh',
+    sizing: '900 W · 5 kWh',
     image: '/images/products/precifarm-family-home.png',
     imageAlt:
-      'A Kenyan family home at golden hour with a 4-panel rooftop solar array and the Neura Pod inverter and battery wall-mounted under the eave.',
+      'A Kenyan family home at golden hour with a rooftop solar array and the Neura Pod wall-mounted under the eave.',
     bg: 'bg-family/15',
     highlights: [
-      'Fridge, TV, Wi-Fi, fans, full lighting — about 4 kWh/day',
-      'Neura Pod 5 expandable — stack more battery as the household grows',
-      'Cash KSh 373,000 · customer-arranged bank financing optional',
+      'Small fridge, TV, Wi-Fi, fans, and full LED lighting — about 3 kWh/day',
+      'Neura Pod 5 expandable — add more panels or battery as the household grows',
+      'KSh 290,000 cash, with customer-arranged bank financing via Equity, KCB, Co-op, or SACCOs',
     ],
     featured: { label: 'Most popular' },
   },
   business: {
     glyph: Building2,
     tier: 'Commercial / institutional',
-    sizing: '13.2 kWp · 15 kWh',
+    sizing: 'From 2.75 kWp · 15 kWh',
     image: '/images/products/precifarm-business-site.png',
     imageAlt:
-      'A Precifarm Commercial site with rooftop solar panels and a battery enclosure powering 24/7 operations with no downtime.',
+      'A Precifarm Commercial site with rooftop solar panels and the Neura Pod powering 24/7 operations.',
     bg: 'bg-business/15',
     highlights: [
-      'Borehole irrigation up to 3 km from source · 5–45 acres of farmland',
-      'Cold storage, milling, clinics, lodges, SMEs — about 28 kWh/day',
-      'Bespoke quote sized to your site · KCB / Stanbic financing optional',
+      'Borehole irrigation up to 3 km from source, drip or sprinkler across 5–45 acres',
+      'Cold storage, milling, clinics, lodges, and SME loads — scalable from 2.75 kWp up to 13.2 kWp',
+      'From KSh 520,000, confirmed in writing after a site survey — KCB / Stanbic partner-arranged',
     ],
   },
 };
@@ -155,7 +155,7 @@ export default async function ProductsIndexPage(): Promise<React.ReactElement> {
             heading="Side by side"
             intro="Capacity, components, and support tier across the three packages."
           />
-          <div className="border-line mt-10 overflow-x-auto rounded-xl border bg-white shadow-sm">
+          <div className="mt-10 overflow-x-auto">
             <table className="w-full text-left text-sm">
               <caption className="sr-only">Compare Precifarm products by capacity and use</caption>
               <thead>
@@ -206,7 +206,7 @@ export default async function ProductsIndexPage(): Promise<React.ReactElement> {
                 <CompareRow
                   ordered={ordered}
                   label="Daily load"
-                  cells={['~0.6 kWh/day', '~4 kWh/day', '~28 kWh/day']}
+                  cells={['~0.6 kWh/day', '~3 kWh/day', '~28 kWh/day']}
                 />
                 <CompareRow
                   ordered={ordered}
@@ -220,12 +220,12 @@ export default async function ProductsIndexPage(): Promise<React.ReactElement> {
                 <CompareRow
                   ordered={ordered}
                   label="Inverter"
-                  cells={['1.5 kW hybrid', '3 kW hybrid', '12 kW hybrid (Deye)']}
+                  cells={['1.5 kW hybrid', '5 kW hybrid', 'From 10 kVA, scalable to 12 kW Deye']}
                 />
                 <CompareRow
                   ordered={ordered}
                   label="Panels"
-                  cells={['1 × 550 W', '4 × 550 W (2.2 kWp)', '24 × 550 W (13.2 kWp)']}
+                  cells={['1 × 550 W', '2 × 450 W (900 W, expandable)', 'From 5 × 550 W (2.75 kWp) up to 24 × 550 W (13.2 kWp)']}
                 />
                 <CompareRow
                   ordered={ordered}
@@ -246,9 +246,9 @@ export default async function ProductsIndexPage(): Promise<React.ReactElement> {
                   label="Starting price"
                   emphasize
                   cells={[
-                    'KSh 137,000 cash · KSh 5,472/mo',
-                    'KSh 373,000 cash',
-                    'Bespoke — contact us',
+                    'KSh 95,000 cash · KSh 5,472/mo',
+                    'KSh 290,000 cash',
+                    'From KSh 520,000 — bespoke',
                   ]}
                 />
               </tbody>
@@ -257,8 +257,8 @@ export default async function ProductsIndexPage(): Promise<React.ReactElement> {
         </div>
       </section>
 
-      <section className="container-page section">
-        <div className="border-line bg-surface-panel relative overflow-hidden rounded-2xl border p-8 md:p-12">
+      <section className="bg-surface-muted">
+        <div className="container-page section">
           <div className="grid gap-8 md:grid-cols-[1.4fr_1fr] md:items-center">
             <div>
               <p className="text-brand text-sm font-semibold uppercase tracking-wider">

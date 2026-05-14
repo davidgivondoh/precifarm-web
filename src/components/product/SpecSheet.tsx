@@ -17,12 +17,12 @@ const sizingMath: Record<
       '1 panel produces 1.86 kWh per day worst-case, three times the load. Battery covers 1.5 nights of evening use. Massive headroom for cloudy weeks.',
   },
   family: {
-    dailyPv: '7.43 kWh',
+    dailyPv: '3.04 kWh',
     usableBattery: '4.0 kWh',
-    dailyLoad: '4.0 kWh',
-    refill: '~1.2 days',
+    dailyLoad: '3.0 kWh',
+    refill: '~1.6 days',
     rationale:
-      '4 panels generate 7.4 kWh per day worst-case, refilling the battery in 1.2 days even after deep discharge. Inverter handles surge loads from fridge compressor and small heating elements.',
+      '2 × 450 W panels generate 3.04 kWh per day worst-case, refilling the 5 kWh battery in 1.6 days even after deep discharge. The 5 kW inverter handles surge loads from the fridge compressor. The array is expandable as the household load grows.',
   },
   business: {
     dailyPv: '44.6 kWh',

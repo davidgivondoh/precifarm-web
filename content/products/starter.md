@@ -46,16 +46,16 @@ journey:
   yearOverYear: WhatsApp and phone support during business hours. Manufacturer warranties on components, one-year workmanship warranty.
 pricing:
   - label: Cash price
-    value: KSh 137,000
+    value: KSh 95,000
   - label: Monthly (24 months)
     value: KSh 5,472 / month
-  - label: Deposit (20%)
-    value: KSh 27,400
+  - label: Deposit
+    value: KSh 12,500
 faq:
   - q: How long does installation take?
     a: One day, with a single EPRA-licensed Precifarm technician.
   - q: Can I pay monthly?
-    a: Yes. KSh 27,400 deposit (20%), then KSh 5,472 a month for 24 months at 18% per annum reducing balance via M-Pesa standing order. You own the system at the end.
+    a: Yes — on Lipa Pole Pole, our 24-month plan. KSh 12,500 deposit, then KSh 5,472 a month for 24 months via M-Pesa standing order. You own the system at the end.
   - q: How is the system sized?
     a: One 550 W panel produces 1.86 kWh per day in worst-case Kenyan conditions (4.5 peak sun hours × 0.75 derate). The Starter load is roughly 0.6 kWh per day, so the panel produces about three times what you use — massive headroom for cloudy weeks.
   - q: Will it run a fridge?
@@ -68,7 +68,7 @@ faq:
     a: Yes. All wiring meets EPRA standards and installation is by licensed technicians.
 seo:
   title: Precifarm Starter — Solar backup from KSh 5,472 / month
-  description: 550 W panel, 1.5 kWh Neura Pod, 1.5 kW hybrid inverter with Neura AI monitoring. Installed in one day. KSh 137,000 cash or KSh 5,472 / month for 24 months.
+  description: 550 W panel, 1.5 kWh Neura Pod, 1.5 kW hybrid inverter with Neura AI monitoring. Installed in one day. KSh 95,000 cash or KSh 5,472 / month for 24 months on Lipa Pole Pole.
 ---
 
 ## Power your essentials, uninterrupted.

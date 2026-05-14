@@ -70,13 +70,10 @@ export function BuiltForWorkloads(): React.ReactElement {
           heading="A typical day on Precifarm Commercial."
           intro="Four common operating profiles we have sized this package for. Your loads probably look like one of these — or a blend."
         />
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-x-10 gap-y-12 md:grid-cols-2 lg:grid-cols-4">
           {workloads.map(({ icon: Icon, title, subtitle, loads }) => (
-            <article
-              key={title}
-              className="border-line bg-surface group flex flex-col rounded-xl border p-6 transition-all hover:-translate-y-0.5 hover:border-brand/30 hover:shadow-md"
-            >
-              <span className="bg-brand/10 text-brand inline-flex h-11 w-11 items-center justify-center rounded-lg transition-colors group-hover:bg-brand group-hover:text-white">
+            <article key={title} className="flex flex-col">
+              <span className="bg-brand/10 text-brand inline-flex h-11 w-11 items-center justify-center rounded-lg">
                 <Icon aria-hidden="true" className="h-5 w-5" />
               </span>
               <h3 className="font-display text-ink mt-5 text-lg font-medium">{title}</h3>

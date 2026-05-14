@@ -118,17 +118,16 @@ type WorkedExample = {
 
 const examples: ReadonlyArray<WorkedExample> = [
   {
-    title: 'Starter — Precifarm 24-month plan',
+    title: 'Starter — Lipa Pole Pole 24-month plan',
     subtitle:
-      '20% deposit, balance over 24 months at 18% per annum reducing balance. Collected via M-Pesa monthly standing order.',
+      'Fixed deposit, fixed monthly instalment over 24 months. Collected via M-Pesa standing order.',
     rows: [
-      { label: 'Selling price', value: 'KSh 137,000' },
-      { label: 'Deposit (20%)', value: 'KSh 27,400' },
-      { label: 'Balance financed', value: 'KSh 109,600' },
+      { label: 'Selling price', value: 'KSh 95,000' },
+      { label: 'Deposit', value: 'KSh 12,500' },
+      { label: 'Balance', value: 'KSh 82,500' },
       { label: 'Term', value: '24 months' },
-      { label: 'Interest rate', value: '18% p.a. reducing balance' },
-      { label: 'Total interest (approx.)', value: 'KSh 21,720' },
-      { label: 'Total paid over 2 years', value: 'KSh 158,720' },
+      { label: 'Total of instalments', value: 'KSh 131,328' },
+      { label: 'Total paid over 2 years', value: 'KSh 143,828' },
     ],
     highlight: { label: 'Monthly instalment', value: 'KSh 5,472' },
     closing:
@@ -137,32 +136,32 @@ const examples: ReadonlyArray<WorkedExample> = [
   {
     title: 'Family — customer-arranged personal loan (illustrative)',
     subtitle:
-      'Precifarm Family is sold cash-only at KSh 373,000. If you spread the cost, you do it directly with the bank — Equity Equiloan, KCB unsecured, or Co-op personal loan. Below: a 36-month secured personal facility at 16% per annum.',
+      'Precifarm Family is sold cash-only at KSh 290,000. If you spread the cost, you do it directly with the bank — Equity Equiloan, KCB unsecured, or Co-op personal loan. Below: a 36-month secured personal facility at 16% per annum.',
     rows: [
-      { label: 'Selling price', value: 'KSh 373,000' },
-      { label: 'Deposit (30%)', value: 'KSh 111,900' },
-      { label: 'Balance financed', value: 'KSh 261,100' },
+      { label: 'Selling price', value: 'KSh 290,000' },
+      { label: 'Deposit (30%)', value: 'KSh 87,000' },
+      { label: 'Balance financed', value: 'KSh 203,000' },
       { label: 'Term', value: '36 months' },
       { label: 'Interest rate', value: '16% p.a. reducing balance' },
-      { label: 'Total interest (approx.)', value: 'KSh 69,362' },
-      { label: 'Total paid', value: 'KSh 442,362' },
+      { label: 'Total interest (approx.)', value: 'KSh 52,700' },
+      { label: 'Total paid', value: 'KSh 342,700' },
     ],
-    highlight: { label: 'Monthly instalment', value: 'KSh 9,180' },
+    highlight: { label: 'Monthly instalment', value: 'KSh 7,103' },
   },
   {
     title: 'Commercial — customer-arranged KCB Clean Energy (illustrative)',
     subtitle:
-      'Precifarm Commercial is sold cash-only at KSh 1,585,000. Customers typically arrange KCB Clean Energy Financing themselves — KCB partners with vetted providers like Precifarm to deliver and install systems with terms aligned to the customer’s cash flow. Below: 30% deposit, balance over 60 months at 16% p.a.',
+      'Precifarm Commercial is sold cash-only from KSh 520,000 (entry config) up to around KSh 1.5m for a full 13.2 kWp borehole-irrigation deployment. Customers typically arrange KCB Clean Energy Financing themselves — KCB partners with vetted providers like Precifarm to deliver and install systems with terms aligned to the customer’s cash flow. Below: a full 13.2 kWp / 15 kWh deployment, 30% deposit, balance over 60 months at 16% p.a.',
     rows: [
-      { label: 'Selling price', value: 'KSh 1,585,000' },
-      { label: 'Deposit (30%)', value: 'KSh 475,500' },
-      { label: 'Balance financed', value: 'KSh 1,109,500' },
+      { label: 'Selling price (full config)', value: 'KSh 1,500,000' },
+      { label: 'Deposit (30%)', value: 'KSh 450,000' },
+      { label: 'Balance financed', value: 'KSh 1,050,000' },
       { label: 'Term', value: '60 months' },
       { label: 'Interest rate', value: '16% p.a. reducing balance' },
-      { label: 'Total interest (approx.)', value: 'KSh 509,353' },
-      { label: 'Total paid (incl. deposit)', value: 'KSh 2,094,353' },
+      { label: 'Total interest (approx.)', value: 'KSh 482,000' },
+      { label: 'Total paid (incl. deposit)', value: 'KSh 1,982,000' },
     ],
-    highlight: { label: 'Monthly instalment', value: 'KSh 26,981' },
+    highlight: { label: 'Monthly instalment', value: 'KSh 25,533' },
     closing:
       'A Commercial customer offsetting roughly KSh 35,000 per month in KPLC bills and diesel generator costs sees net positive cash flow from month one — the loan effectively self-finances through energy savings.',
   },
@@ -186,7 +185,7 @@ function PartnerCard({ partner: p }: { partner: Partner }): React.ReactElement {
       href={p.url}
       target={isExternal ? '_blank' : undefined}
       rel={isExternal ? 'noopener noreferrer' : undefined}
-      className="border-line bg-surface group flex flex-col rounded-xl border p-6 transition-all hover:-translate-y-0.5 hover:border-brand/30 hover:shadow-md"
+      className="group flex flex-col"
     >
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-start gap-3">
@@ -194,7 +193,9 @@ function PartnerCard({ partner: p }: { partner: Partner }): React.ReactElement {
             <Icon aria-hidden="true" className="h-5 w-5" />
           </span>
           <div>
-            <h4 className="font-display text-ink text-base font-medium">{p.name}</h4>
+            <h4 className="font-display text-ink group-hover:text-brand text-base font-medium transition-colors">
+              {p.name}
+            </h4>
             <p className="text-ink-subtle mt-0.5 text-xs uppercase tracking-wider">{p.bestFor}</p>
           </div>
         </div>

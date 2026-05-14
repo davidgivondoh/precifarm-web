@@ -1,5 +1,5 @@
 ---
-title: Inside the PreciSense edge module
+title: Inside the edge telemetry module
 slug: precisense-edge-module
 excerpt: Every Precifarm system has a small board on the charge controller. Here is what it does, why it costs twelve dollars, and what we got wrong.
 publishedAt: '2026-02-09'
@@ -7,21 +7,21 @@ category: Engineering
 author: The Precifarm team
 cover: https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&q=80&auto=format&fit=crop
 seo:
-  title: Inside the PreciSense edge module
-  description: Engineering deep-dive on the small telemetry board that reports state of health from every Precifarm solar system.
+  title: Inside the edge telemetry module
+  description: Engineering deep-dive on the small telemetry board — our data layer at the edge — that reports state of health from every Precifarm solar system.
 ---
 
-Every Precifarm system has a small board attached to the charge controller. We call it PreciSense. It is the smallest interesting thing we ship.
+Every Precifarm system has a small board attached to the charge controller. It is the smallest interesting thing we ship — the data layer at the edge.
 
 The board has four jobs.
 
 ## Sense
 
-PreciSense reads voltage on the panel side, voltage on the battery side, current on each, temperature on the heatsink, and state of charge as reported by the battery management system. It samples every five seconds.
+The board reads voltage on the panel side, voltage on the battery side, current on each, temperature on the heatsink, and state of charge as reported by the battery management system. It samples every five seconds.
 
 ## Summarise
 
-Five-second samples are useful for anomaly detection but expensive to transmit. PreciSense aggregates to one-minute medians and ships those over a low-bandwidth link.
+Five-second samples are useful for anomaly detection but expensive to transmit. The board aggregates to one-minute medians and ships those over a low-bandwidth link.
 
 ## Ship
 
@@ -29,7 +29,7 @@ We use a 2G fallback because a lot of rural Kenya is still 2G. Telemetry goes to
 
 ## Decide locally
 
-If panel voltage drops below 8 V for more than ten minutes during daylight, PreciSense flags a likely shading or panel fault and notifies the gateway with priority.
+If panel voltage drops below 8 V for more than ten minutes during daylight, the board flags a likely shading or panel fault and notifies the gateway with priority.
 
 Most of our triage happens centrally, but the worst conditions get attention faster when the edge has rules of its own.
 

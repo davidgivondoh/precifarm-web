@@ -15,6 +15,8 @@ import {
   Quote,
   ShieldCheck,
   TrendingUp,
+  Users,
+  Wrench,
   type LucideIcon,
 } from 'lucide-react';
 import { getSitePage } from '@/lib/content';
@@ -30,7 +32,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const stats: ReadonlyArray<{ value: string; label: string }> = [
-  { value: '2024', label: 'Founded' },
+  { value: 'Aug 2025', label: 'Founded' },
   { value: '6', label: 'Cities served' },
   { value: '100%', label: 'Built in Kenya' },
   { value: '0', label: 'Outside investors' },
@@ -53,8 +55,8 @@ const principles: ReadonlyArray<{ icon: LucideIcon; title: string; body: string 
   },
   {
     icon: Activity,
-    title: 'Software watches every system.',
-    body: 'PreciSense reports voltage, current, and battery health every minute. We see drift before you see darkness, and our crews show up with the right part already in hand.',
+    title: 'A data layer on every system.',
+    body: 'An integrated telemetry board on every Pod reports voltage, current, and battery health every minute. We see drift before you see darkness, and our crews show up with the right part already in hand.',
   },
   {
     icon: Coins,
@@ -74,7 +76,9 @@ const sectors: ReadonlyArray<string> = [
 
 const headingIcons: Record<string, LucideIcon> = {
   'three tiers, one unified platform': Layers,
-  'software that watches': Cpu,
+  'a data layer on every system': Cpu,
+  'who we are': Users,
+  'beyond the commercial tier — bess consultancy and epc': Wrench,
   'field engineers, not subcontractors': HardHat,
   'how we are growing': TrendingUp,
 };

@@ -2,7 +2,7 @@ export const roleTitles: ReadonlyArray<string> = [
   'Field Engineer',
   'Apprentice Field Technician',
   'Software Engineer (Platform)',
-  'Embedded Engineer (PreciSense)',
+  'Embedded Engineer (Telemetry / Data Layer)',
   'Customer Operations Lead',
-  'Account Executive (Business tier)',
+  'Account Executive (Commercial tier)',
 ];

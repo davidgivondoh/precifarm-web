@@ -1,11 +1,11 @@
 ---
 title: Precifarm — Distributed solar energy for Kenya
-description: Three honestly-engineered solar packages, one Neura platform. Starter from KSh 137,000 (or KSh 5,472/month on the Precifarm 24-month plan), Family from KSh 373,000, Commercial bespoke-quoted for irrigation, cold storage, clinics, and SME sites. Optional bank financing partners.
+description: Three honestly-engineered solar packages, one Neura Pod platform. Starter from KSh 95,000 (or KSh 5,472/month on Lipa Pole Pole, our 24-month plan), Family from KSh 290,000, Commercial from KSh 520,000, bespoke-quoted for irrigation, cold storage, clinics, and SME sites. Optional bank financing partners.
 
 hero:
   eyebrow: Solar built for Kenya
-  headline: Power your home/business with reliable 24/07 offgrid solar energy
-  subhead: Pick the package that fits your room, your home, or your site. We design it, install it in a day or two, and the same engineers care for it for years to come.
+  headline: Reliable solar power for every Kenyan home and business.
+  subhead: Reliable, data-driven solar with our innovative, modular Neura Pod battery — powers lighting, a fridge, heavier loads, even EV charging. From KSh 5,472 a month on Lipa Pole Pole.
   image: /images/home/gemini-hero.png
   imageAlt: A rural Kenyan home with rooftop solar panels and a wall-mounted inverter and battery, in warm golden-hour light.
   primaryCta:
@@ -16,7 +16,7 @@ hero:
     href: /contact
 
 partners:
-  label: Trusted to power
+  label: Who we install for
   items:
     - name: Schools
     - name: Clinics
@@ -28,32 +28,32 @@ partners:
 productCards:
   - slug: starter
     name: Precifarm Starter
-    tagline: Unbreakable essential power.
-    blurb: A single panel and the 1.5 kWh Neura Pod keep lights, Wi-Fi, TV, fan, and phones running through any blackout.
-    price: From KSh 137,000
-    monthly: or KSh 5,472 / month on the Precifarm 24-month plan
+    tagline: Essential power, never out.
+    blurb: Keep lights, Wi-Fi, TV, fans, and phone charging on through any blackout. One 550 W panel and a 1.5 kWh Neura Pod, installed in a single day.
+    price: From KSh 95,000
+    monthly: or KSh 5,472 / month on Lipa Pole Pole, our 24-month plan
   - slug: family
     name: Precifarm Family
-    tagline: Complete off-grid autonomy.
-    blurb: Four panels and the 5 kWh Neura Pod take a 2- to 3-bedroom home off the grid — fridge, TV, Wi-Fi, fans, and full lighting, all day.
-    price: KSh 373,000 cash
+    tagline: Take your home off the grid.
+    blurb: A 2- to 3-bedroom home with a small fridge, TV, Wi-Fi, fans, and full LED lighting — on a 5 kWh Neura Pod and an expandable solar array.
+    price: KSh 290,000 cash
     financingNote: Bank financing customer-arranged via Equity, KCB, Co-op, or SACCO partners.
   - slug: business
     name: Precifarm Commercial
-    tagline: Mission-critical continuous uptime.
-    blurb: A 13.2 kWp array, 15 kWh Neura Pod, and 12 kW hybrid inverter sized for borehole irrigation up to 3 km from source (5–45 acres), cold storage, milling, clinics, and SME loads.
-    price: Bespoke — talk to us
+    tagline: Solar that runs your operation.
+    blurb: Borehole irrigation up to 3 km from source (5–45 acres), cold storage, milling, clinics, and SME loads. Scalable from 2.75 kWp entry up to 13.2 kWp full irrigation, on a 15 kWh Neura Pod.
+    price: From KSh 520,000 — bespoke after site survey
     financingNote: Confirmed in writing after a site survey. KCB Clean Energy and Stanbic Solar PV are customer-arranged via partner links.
 
 whyOnePlatform:
-  heading: Built and repaired by us.
+  heading: We stay after the install.
   items:
     - icon: shield
-      title: One team end-to-end
-      body: The crew that installs your system services it for life.
+      title: One team, end to end
+      body: The crew that designs your system installs it, then services it for the next five years. No subcontractors, no handoffs, no abandoned customers.
     - icon: bell
       title: Self-diagnosing app
-      body: Detects faults, guides safe checks, one-taps our engineers on WhatsApp.
+      body: The Neura app detects faults, walks you through safe checks in English or Swahili, and one-taps a real Precifarm engineer on WhatsApp when something needs us.
 
 howWeWork:
   heading: The deployment process
@@ -81,12 +81,14 @@ howWeWork:
       imageAlt: A laptop screen displaying analytics charts and performance metrics.
 
 impact:
-  heading: Our commitment in numbers
+  heading: One company, three pillars.
   stats:
-    - value: 4,200+
-      label: Homes and businesses powered across 28 counties
-    - value: 97%
-      label: Issues resolved on the first visit — because we show up prepared
+    - value: Neura Pod
+      label: Battery, hybrid inverter, and integrated data layer in a single Kenyan-engineered enclosure. Three tiers — Starter, Family, Commercial — on one platform.
+    - value: Lipa Pole Pole
+      label: A 24-month instalment plan that puts the Neura Pod within reach where bank credit and grid extension do not.
+    - value: BESS consultancy & EPC
+      label: Battery storage projects from 50 kWh to 10 MWh — site assessment through commissioning, run by the same engineers who service the Pod fleet.
 
 useCases:
   heading: Selected installations

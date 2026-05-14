@@ -47,13 +47,8 @@ export function PricingTable({ product }: { product: Product }): React.ReactElem
         intro="One transparent price, no hidden fees. Out-of-region installs add a travel line."
       />
 
-      <div className="mt-10 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
-        <div className="border-brand/30 bg-linear-to-br from-brand/5 to-surface relative overflow-hidden rounded-2xl border-2 p-8 md:p-10">
-          {monthly && (
-            <span className="bg-brand absolute right-6 top-6 inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white">
-              Monthly option
-            </span>
-          )}
+      <div className="mt-12 grid gap-x-14 gap-y-10 lg:grid-cols-[1.4fr_1fr]">
+        <div>
           <p className="text-ink-muted text-sm font-medium uppercase tracking-wider">
             {cash?.label ?? 'Starting price'}
           </p>
@@ -70,7 +65,7 @@ export function PricingTable({ product }: { product: Product }): React.ReactElem
           )}
 
           {otherTerms.length > 0 && (
-            <dl className="border-line mt-7 grid gap-4 border-t pt-6 sm:grid-cols-2">
+            <dl className="border-line mt-8 grid gap-x-10 gap-y-5 border-t pt-6 sm:grid-cols-2">
               {otherTerms.map((term) => (
                 <div key={term.label}>
                   <dt className="text-ink-muted text-xs uppercase tracking-wider">{term.label}</dt>
@@ -80,10 +75,10 @@ export function PricingTable({ product }: { product: Product }): React.ReactElem
             </dl>
           )}
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
               href="/contact"
-              className="bg-brand hover:bg-brand-strong inline-flex items-center gap-1.5 rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-colors"
+              className="bg-brand hover:bg-brand-strong inline-flex items-center gap-1.5 px-5 py-2.5 text-sm font-semibold text-white transition-colors"
             >
               Get a quote
               <ArrowRight aria-hidden="true" className="h-4 w-4" />
@@ -92,14 +87,14 @@ export function PricingTable({ product }: { product: Product }): React.ReactElem
               href="https://wa.me/254794702768"
               target="_blank"
               rel="noopener noreferrer"
-              className="border-line hover:bg-surface-muted inline-flex items-center gap-1.5 rounded-lg border bg-white px-5 py-2.5 text-sm font-semibold transition-colors"
+              className="text-ink-muted hover:text-ink inline-flex items-center gap-1.5 px-3 py-2.5 text-sm font-semibold transition-colors"
             >
               <MessageCircle aria-hidden="true" className="h-4 w-4 text-[#25D366]" />
               WhatsApp us
             </a>
             <Link
               href={`/products/${product.slug}/spec/`}
-              className="text-ink-muted hover:text-ink inline-flex items-center gap-1.5 self-center text-sm transition-colors"
+              className="text-ink-muted hover:text-ink inline-flex items-center gap-1.5 text-sm transition-colors"
             >
               <Download aria-hidden="true" className="h-4 w-4" />
               Spec sheet (PDF)
@@ -107,7 +102,7 @@ export function PricingTable({ product }: { product: Product }): React.ReactElem
           </div>
         </div>
 
-        <div className="border-line bg-surface flex flex-col gap-6 rounded-2xl border p-6 md:p-8">
+        <div className="flex flex-col gap-8">
           <div>
             <p className="text-brand text-xs font-semibold uppercase tracking-wider">
               What is included
@@ -126,7 +121,7 @@ export function PricingTable({ product }: { product: Product }): React.ReactElem
           </div>
 
           {product.slug === 'business' && (
-            <div className="border-line border-t pt-6">
+            <div>
               <div className="flex items-center gap-2">
                 <FileText aria-hidden="true" className="text-brand h-4 w-4" />
                 <p className="text-ink text-xs font-semibold uppercase tracking-wider">

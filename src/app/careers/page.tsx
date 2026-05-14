@@ -119,7 +119,7 @@ const roles: ReadonlyArray<Role> = [
     type: 'Full-time',
     body: 'Build the platform that watches every system — telemetry ingest, dispatch, customer dashboards. TypeScript and Go.',
     responsibilities: [
-      'Own services in our telemetry pipeline from PreciSense devices into Neura',
+      'Own services in our data-layer pipeline from on-device telemetry into Neura',
       'Build dispatch and customer-facing tooling used by field engineers daily',
       'Carry a slice of on-call so the platform stays as accountable as the field',
     ],
@@ -130,13 +130,13 @@ const roles: ReadonlyArray<Role> = [
     ],
   },
   {
-    title: 'Embedded Engineer (PreciSense)',
+    title: 'Embedded Engineer (Telemetry / Data Layer)',
     department: 'Engineering',
     locations: 'Nairobi',
     type: 'Full-time',
-    body: 'Design and iterate PreciSense — the small board on every charge controller that makes Neura possible.',
+    body: 'Design and iterate the telemetry board on every charge controller — the data layer that makes Neura possible.',
     responsibilities: [
-      'Own firmware for the next generation of PreciSense boards',
+      'Own firmware for the next generation of telemetry boards',
       'Work directly with field engineers on what the device should sense and report',
       'Own the device’s reliability budget — failures in the field are your alarm',
     ],
@@ -164,13 +164,13 @@ const roles: ReadonlyArray<Role> = [
     ],
   },
   {
-    title: 'Account Executive (Business tier)',
+    title: 'Account Executive (Commercial tier)',
     department: 'Commercial',
     locations: 'Nairobi (some travel)',
     type: 'Full-time',
-    body: 'Own relationships with retail, clinic, school, and SACCO customers buying our Business tier.',
+    body: 'Own relationships with retail, clinic, school, and SACCO customers buying our Commercial tier.',
     responsibilities: [
-      'Run discovery calls and site visits for Business-tier prospects',
+      'Run discovery calls and site visits for Commercial-tier prospects',
       'Translate energy needs into a written design with our engineering team',
       'Carry a quarterly book and report progress to the founders directly',
     ],

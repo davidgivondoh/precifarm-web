@@ -4,7 +4,7 @@ import { PartnerStrip } from '@/components/home/PartnerStrip';
 import { ProductCards } from '@/components/home/ProductCards';
 import { WhyOnePlatform } from '@/components/home/WhyOnePlatform';
 import { HowWeWork } from '@/components/home/HowWeWork';
-import { ImpactStats } from '@/components/home/ImpactStats';
+import { ThreePillars } from '@/components/home/ThreePillars';
 import { UseCases } from '@/components/home/UseCases';
 import { ClosingCta } from '@/components/home/ClosingCta';
 import { getHomePage } from '@/lib/content';
@@ -37,7 +37,7 @@ export default async function HomePage(): Promise<React.ReactElement> {
       <ProductCards cards={home.productCards} />
       <WhyOnePlatform data={home.whyOnePlatform} />
       <HowWeWork data={home.howWeWork} />
-      <ImpactStats data={home.impact} />
+      <ThreePillars data={home.impact} />
       <UseCases data={home.useCases} />
       <ClosingCta data={home.closingCta} />
     </>

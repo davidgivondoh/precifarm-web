@@ -86,7 +86,7 @@ export function FinancingPartners({
         heading="Routes to ownership."
         intro="Precifarm is not a credit broker and does not guarantee approval. We introduce you to the right relationship manager and supply the technical specifications, BOM, and EPRA compliance documents banks require. Mention Precifarm AI Ltd as your solar provider during your application."
       />
-      <div className="mt-10 grid gap-5 md:grid-cols-2">
+      <div className="mt-12 grid gap-x-10 gap-y-10 md:grid-cols-2">
         {partners.map((p) => {
           const isExternal = p.url.startsWith('http');
           const Icon = p.icon;
@@ -96,7 +96,7 @@ export function FinancingPartners({
               href={p.url}
               target={isExternal ? '_blank' : undefined}
               rel={isExternal ? 'noopener noreferrer' : undefined}
-              className="border-line bg-surface group flex flex-col rounded-xl border p-5 transition-all hover:-translate-y-0.5 hover:border-brand/30 hover:shadow-md"
+              className="group flex flex-col"
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="flex items-start gap-3">
@@ -104,7 +104,9 @@ export function FinancingPartners({
                     <Icon aria-hidden="true" className="h-5 w-5" />
                   </span>
                   <div>
-                    <h3 className="font-display text-ink text-base font-medium">{p.name}</h3>
+                    <h3 className="font-display text-ink group-hover:text-brand text-base font-medium transition-colors">
+                      {p.name}
+                    </h3>
                     <p className="text-ink-subtle mt-0.5 text-xs uppercase tracking-wider">
                       {p.bestFor}
                     </p>
