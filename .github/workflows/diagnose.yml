@@ -1,0 +1,13 @@
+name: Diagnose
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  hello:
+    name: Hello
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print a hello message
+        run: echo "GitHub Actions can run a job on this repo."
