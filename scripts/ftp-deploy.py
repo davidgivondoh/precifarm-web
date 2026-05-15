@@ -18,6 +18,20 @@ import time
 from pathlib import Path
 
 
+def _load_env_file(path: Path) -> None:
+    """Lightweight .env loader so callers don't have to put creds on the command line."""
+    if not path.is_file():
+        return
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        k, v = line.split("=", 1)
+        os.environ.setdefault(k.strip(), v.strip())
+
+
+_load_env_file(Path(".env.ftp.local"))
+
 LOCAL_ROOT = Path("out")
 HOST = os.environ["HOSTINGER_FTP_HOST"]
 USER = os.environ["HOSTINGER_FTP_USER"]

@@ -22,7 +22,8 @@
     "test:e2e:install": "playwright install --with-deps chromium firefox webkit",
     "lhci": "lhci autorun",
     "check:links": "node scripts/check-links.mjs",
-    "postbuild": "next-sitemap --config next-sitemap.config.mjs && node scripts/strip-style-guide.mjs"
+    "postbuild": "next-sitemap --config next-sitemap.config.mjs && node scripts/strip-style-guide.mjs",
+    "ship": "pnpm build && python scripts/ftp-deploy.py"
   },
   "dependencies": {
     "@formspree/react": "3.0.0",

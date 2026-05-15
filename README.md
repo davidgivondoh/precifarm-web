@@ -36,6 +36,7 @@ pnpm dev                     # http://localhost:3000
 | `pnpm test`         | Vitest unit tests              |
 | `pnpm test:e2e`     | Playwright e2e + axe           |
 | `pnpm lhci`         | Lighthouse CI against `./out`  |
+| `pnpm ship`         | `pnpm build` then FTPS-mirror `./out` to Hostinger via `scripts/ftp-deploy.py`. Reads credentials from gitignored `.env.ftp.local`. |
 
 ## Repository layout
 
@@ -202,6 +203,24 @@ pnpm build               # produces ./out
 #   - FileZilla / Cyberduck over FTP
 #   - rsync over SSH if your plan includes it
 ```
+
+### Option D — Local FTPS deploy (`pnpm ship`)
+
+A scripted alternative to Option A when GitHub Actions is unavailable (billing lock, runner quota, offline). Runs `pnpm build` then mirrors `./out` to Hostinger over FTPS via `scripts/ftp-deploy.py` (Python 3, stdlib only). Reads credentials from a **gitignored** `.env.ftp.local` at the repo root:
+
+```
+HOSTINGER_FTP_HOST=72.60.93.246
+HOSTINGER_FTP_USER=u373428074
+HOSTINGER_FTP_PASSWORD=<your-ftp-password>
+```
+
+Then:
+
+```bash
+pnpm ship                # builds + uploads (~2 min total, incremental on subsequent runs)
+```
+
+The script handles connection drops with retry-and-resume (skips files whose remote size already matches local), so re-running after a failure picks up where it left off rather than re-uploading everything. To debug the FTP layout, run `python scripts/ftp-inspect.py` — lists landing directory + parent. (Script is named `ship` rather than `deploy` because `pnpm deploy` is a reserved built-in command for workspace deployment.)
 
 Add the env vars from the table above as build-time environment variables either in the GitHub Actions workflow (`env:` block) or in a local `.env.local` if building manually.
 
