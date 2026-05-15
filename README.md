@@ -224,6 +224,39 @@ The script handles connection drops with retry-and-resume (skips files whose rem
 
 Add the env vars from the table above as build-time environment variables either in the GitHub Actions workflow (`env:` block) or in a local `.env.local` if building manually.
 
+### Deployment runbook (lessons learned 2026-05-14/15)
+
+Hard-won facts about this Hostinger plan. Read this before changing the deploy setup.
+
+**The real webroot is `/domains/precifarm.com/public_html/`.** Not `/public_html/` (that contains an unrelated older farming site from a previous tenant of the primary user dir), and not `/domains/precifarm.com/` (Hostinger placed a `DO_NOT_UPLOAD_HERE` sentinel file at that level).
+
+**Two FTP accounts exist with different chroots:**
+
+| FTP user | Chroot / landing dir | Where uploading to `./` lands |
+| --- | --- | --- |
+| `u373428074` (primary) | `/home/u373428074/` (with `public_html` and `domains/` underneath) | `/home/u373428074/public_html/` — the old farming site, **not** precifarm.com |
+| `u373428074.admin` (scoped) | `/home/u373428074/domains/precifarm.com/` (chrooted) | `/home/u373428074/domains/precifarm.com/public_html/` — **the real webroot** |
+
+Either works as long as `REMOTE_TARGET_DIR` (or `server-dir` in CI) is set to land in `/home/u373428074/domains/precifarm.com/public_html/`:
+
+- For primary `u373428074`: set `REMOTE_TARGET_DIR=/domains/precifarm.com/public_html/`
+- For scoped `.admin`: set `REMOTE_TARGET_DIR=/public_html/` (that's its landing dir; equivalent path)
+
+**The hPanel Git auto-deploy is a trap on this domain.** It clones the repo *source* into `/domains/precifarm.com/public_html/`, which is the same directory the FTP deploy targets. The two fight each other — every Git auto-deploy overwrites the static build with `package.json`, `src/`, `README.md`, `.git/`, etc., and the site returns 403 (no `index.html` at webroot). **Disable Hostinger's Git auto-deploy** before relying on `pnpm ship` or the GitHub Actions deploy. (See `TODO.md`.)
+
+**The standard deploy command is `pnpm ship`.** It runs `pnpm build && python scripts/ftp-deploy.py`. The script reads credentials from `.env.ftp.local` (gitignored), uses FTPS over port 21 with TLS, and handles connection drops with retry-and-resume — re-running after a partial upload picks up where it left off instead of re-uploading everything.
+
+**Troubleshooting**
+
+| Symptom | Cause | Fix |
+| --- | --- | --- |
+| `pnpm ship` runs but precifarm.com still shows old content | Files landed in the wrong directory | Check `REMOTE_TARGET_DIR` in `.env.ftp.local`. Should be `/domains/precifarm.com/public_html/` |
+| precifarm.com returns 403 Forbidden after a deploy | hPanel Git auto-deploy overwrote the static build with source files | Disable Hostinger Git auto-deploy (TODO #1) and re-run `pnpm ship` |
+| `ftplib.error_perm: 550 SIZE not allowed in ASCII mode` | Cosmetic FTP server quirk in `ftp-inspect.py` size check | Harmless — only affects the inspect script's optional size probe |
+| Upload terminates with `EOFError` mid-transfer | Hostinger FTP idle timeout | Re-run `pnpm ship` — `ftp-deploy.py` skips already-uploaded files and continues from the failure point |
+| Bash on Windows mangles `REMOTE_TARGET_DIR=/...` to a Windows path like `C:/Program Files/Git/` | MSYS path conversion | Prefix the command with `MSYS_NO_PATHCONV=1` or rely on `.env.ftp.local` (preferred — bypasses shell expansion entirely) |
+| GitHub Actions runs all show `startup_failure` with no logs | Account-level GitHub billing lock | <https://github.com/settings/billing/summary>. Even free public-repo Actions needs a payment method on file. |
+
 ## Phase status
 
 - **Phase 0 — Plan and validate.** Done.

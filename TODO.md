@@ -60,6 +60,13 @@ Newer minors exist for some packages but are deferred to Phase 4 polish to avoid
 - [ ] Plausible domain confirmed: `precifarm.com`
 - [ ] Standardise contact email across the site — currently `sales@precifarm.com` (footer, contact, products), `hello@precifarm.com` (about, blog, careers), `careers@precifarm.com` (careers form), `privacy@precifarm.com` (privacy). Decide which inboxes actually exist.
 
+## Deployment operations (Hostinger)
+
+- [ ] **Disable hPanel Git auto-deploy** on precifarm.com. It clones the repo SOURCE into `/domains/precifarm.com/public_html/` and overwrites the static build, which is what caused the 403 on 2026-05-15. hPanel → Files → Git → precifarm.com → remove or disable. Until disabled, it'll fight every `pnpm ship`.
+- [ ] **Resolve GitHub Actions billing lock** at <https://github.com/settings/billing/summary>. Public-repo Actions is free but GitHub requires a payment method on file. Once cleared, `deploy.yml` works end-to-end on push to main as a parallel CD path to `pnpm ship`.
+- [ ] **Rotate the FTP password** in hPanel (Files → FTP Accounts → Change FTP password). The current password was shared in chat on 2026-05-15. After rotating: update `.env.ftp.local` locally and run `gh secret set HOSTINGER_FTP_PASSWORD --repo davidgivondoh/precifarm-web` to refresh the GitHub secret.
+- [ ] **Clean repo source files from `/domains/precifarm.com/public_html/`**. The directory now contains both our static export AND leftover source files (package.json, README.md, .git, src/, etc.) from the hPanel Git auto-deploy. Once #1 above is disabled, manually delete `package.json`, `pnpm-lock.yaml`, `tsconfig.json`, `eslint.config.mjs`, `next.config.mjs`, `vitest.config.ts`, `playwright.config.ts`, `next-sitemap.config.mjs`, `postcss.config.mjs`, `lighthouserc.cjs`, `.editorconfig`, `.gitignore`, `.npmrc`, `.nvmrc`, `.prettierignore`, `.prettierrc.cjs`, `README.md`, `TODO.md`, `.env.example`, `docs/`, `scripts/`, `src/`, `.git/`, `.github/`, `public/` from the webroot — they're publicly downloadable otherwise.
+
 ## Bundle / performance
 
 - React 19 runtime is the floor for the home-page bundle (~80 KB gzip including hydration).
